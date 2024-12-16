@@ -1,70 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Greeting Message</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f8ff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #333;
-        }
-
-        #greeting-container {
-            text-align: center;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px 30px;
-            max-width: 400px;
-            width: 100%;
-        }
-
-        #greeting-message {
-            font-size: 1.8em;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        #current-date {
-            margin-top: 10px;
-            font-size: 1em;
-            color: #555;
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neomorphic Phone Alarm</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"/>
 </head>
 <body>
-    <div id="greeting-container">
-        <p id="greeting-message"></p>
-        <p id="current-date"></p>
+  <div class="theme-toggle-container">
+    <label class="switch">
+      <input type="checkbox" id="theme-toggle">
+      <span class="slider round"></span>
+    </label>
+    <span class="mode-label">Dark Mode</span>
+  </div>
+
+  <div class="container">
+    <h1 class="title">Neomorphic ☎️ Alarm</h1>
+    <div class="phone-icon-container">
+      <div class="phone-icon">☎️</div>
     </div>
 
-    <script>
-        const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        const today = new Date();
-        const hrs = today.getHours();
-        const dayOfWeek = weekdays[today.getDay()];
-        const formattedDate = `${dayOfWeek}, ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
-        
-        let greeting;
+    <div class="time-container">
+      <span class="time" id="current-time">00:00:00</span>
+    </div>
 
-        if (hrs < 12) {
-            greeting = 'Good Morning!';
-        } else if (hrs >= 12 && hrs < 17) {
-            greeting = 'Good Afternoon!';
-        } else {
-            greeting = 'Good Evening!';
-        }
-
-        document.getElementById('greeting-message').innerText = greeting;
-        document.getElementById('current-date').innerText = `Today is ${formattedDate}`;
-    </script>
+    <div class="alarm-setup-container">
+      <input type="time" id="alarm-time" class="alarm-input"/>
+      <button id="set-alarm-btn" class="btn">Set Alarm</button>
+      <button id="clear-alarm-btn" class="btn clear-btn">Clear</button>
+    </div>
+  </div>
+  
+  <audio id="alarm-audio" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" preload="auto"></audio>
+  
+  <script src="script.js"></script>
 </body>
 </html>
+
